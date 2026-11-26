@@ -1,0 +1,557 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1F8A9E">
+<title>제주 여행 12/5~12/6</title>
+<meta name="description" content="제주 1박 2일 여행 일정, 지도, 비용 정산, 예약, 준비물 체크리스트">
+<meta property="og:type" content="website">
+<meta property="og:title" content="제주 여행 12/5~12/6">
+<meta property="og:description" content="한라산 종주 · 맛집 · 휴식 | 일정, 지도, 비용 정산, 예약, 준비물">
+<meta property="og:locale" content="ko_KR">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<style>
+:root{
+  --primary:#1F8A9E; --primary-soft:#E3F2F5;
+  --secondary:#F59E3B; --secondary-soft:#FDF1E0;
+  --accent:#3F7D58; --accent-soft:#E6F1EA;
+  --bg:#FAFAF7; --surface:#FFFFFF;
+  --text:#222222; --text-sub:#6B7280; --border:#E5E7EB;
+  --error:#D64545; --error-soft:#FBE9E9;
+  --radius-card:16px; --radius-ctl:12px;
+  --shadow:0 1px 3px rgba(0,0,0,.08);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --primary:#4FB6CB; --primary-soft:#173A42;
+    --secondary:#F5A94E; --secondary-soft:#3D2E17;
+    --accent:#6BB38A; --accent-soft:#1B3025;
+    --bg:#14171A; --surface:#1E2328;
+    --text:#F1F3F4; --text-sub:#9AA3AD; --border:#2E353C;
+    --error:#EF7A7A; --error-soft:#3A2020;
+    --shadow:0 1px 3px rgba(0,0,0,.4);
+  }
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{
+  font-family:Pretendard,-apple-system,BlinkMacSystemFont,"Noto Sans KR","Malgun Gothic",sans-serif;
+  background:var(--bg);color:var(--text);font-size:16px;line-height:1.5;
+  padding-bottom:calc(76px + env(safe-area-inset-bottom));
+  overflow-x:hidden;
+}
+button,input,select,textarea{font:inherit;color:inherit}
+a{color:var(--primary)}
+.app{max-width:480px;margin:0 auto}
+header.top{
+  position:sticky;top:0;z-index:20;background:var(--surface);
+  padding:calc(12px + env(safe-area-inset-top)) 16px 10px;border-bottom:1px solid var(--border);
+}
+header.top h1{font-size:22px;font-weight:700;margin:0}
+header.top .sub{font-size:13px;color:var(--text-sub)}
+main{padding:16px}
+.seg{display:flex;gap:8px;margin-bottom:16px}
+.seg button{
+  flex:1;min-height:44px;border:1px solid var(--border);background:var(--surface);
+  border-radius:var(--radius-ctl);font-weight:600;cursor:pointer;
+}
+.seg button.on{background:var(--primary);border-color:var(--primary);color:#fff}
+.card{
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-card);
+  box-shadow:var(--shadow);padding:16px;margin-bottom:12px;
+}
+.card.rest{background:var(--accent-soft)}
+.card.hike{border-color:var(--accent);border-width:2px}
+.row{display:flex;gap:8px;align-items:center}
+.between{justify-content:space-between}
+.time{font-weight:700;font-size:17px;color:var(--primary)}
+.title{font-size:18px;font-weight:600;margin:2px 0}
+.sub{font-size:14px;color:var(--text-sub)}
+.note{font-size:14px;margin-top:6px}
+.chip{
+  display:inline-flex;align-items:center;gap:4px;font-size:13px;font-weight:600;
+  padding:2px 10px;border-radius:999px;background:var(--primary-soft);color:var(--primary);
+}
+.chip.ok{background:var(--accent-soft);color:var(--accent)}
+.chip.warn{background:var(--secondary-soft);color:var(--secondary)}
+.chip.err{background:var(--error-soft);color:var(--error)}
+.btn{
+  min-height:48px;padding:0 20px;border-radius:var(--radius-ctl);border:1px solid transparent;
+  font-weight:600;cursor:pointer;background:var(--primary);color:#fff;
+}
+.btn.sec{background:transparent;border-color:var(--primary);color:var(--primary)}
+.btn.ghost{background:transparent;color:var(--text-sub)}
+.btn.danger{background:var(--error);color:#fff}
+.btn.sm{min-height:44px;padding:0 14px;font-size:14px}
+.btn:active{opacity:.8}
+.icon-btn{
+  width:44px;height:44px;border:none;background:transparent;border-radius:12px;
+  font-size:18px;cursor:pointer;color:var(--text-sub);
+}
+.fab{
+  position:fixed;right:max(16px,calc(50% - 224px));bottom:calc(88px + env(safe-area-inset-bottom));
+  width:56px;height:56px;border-radius:50%;border:none;background:var(--secondary);color:#fff;
+  font-size:28px;box-shadow:0 4px 12px rgba(0,0,0,.25);cursor:pointer;z-index:15;
+}
+nav.tabs{
+  position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--surface);
+  border-top:1px solid var(--border);padding-bottom:env(safe-area-inset-bottom);
+}
+nav.tabs .in{max-width:480px;margin:0 auto;display:flex}
+nav.tabs button{
+  flex:1;min-height:60px;border:none;background:transparent;cursor:pointer;color:var(--text-sub);
+  font-size:12px;font-weight:600;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;
+}
+nav.tabs button .ic{font-size:22px;line-height:1}
+nav.tabs button.on{color:var(--primary)}
+.segs{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;align-items:center}
+.segs .arrow{color:var(--text-sub);font-size:13px}
+.warnbox{background:var(--secondary-soft);border-radius:var(--radius-ctl);padding:10px 12px;font-size:14px;margin-top:10px}
+.summary{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.summary .card{margin:0;text-align:center}
+.summary .big{font-size:22px;font-weight:700}
+.field{margin-bottom:14px}
+.field label{display:block;font-size:14px;font-weight:600;margin-bottom:4px}
+.field input,.field select,.field textarea{
+  width:100%;min-height:48px;padding:10px 12px;border:1px solid var(--border);
+  border-radius:var(--radius-ctl);background:var(--surface);
+}
+.field textarea{min-height:80px;resize:vertical}
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:50;display:flex;align-items:flex-end;justify-content:center}
+.sheet{
+  background:var(--surface);width:100%;max-width:480px;max-height:90vh;overflow-y:auto;
+  border-radius:20px 20px 0 0;padding:20px 16px calc(20px + env(safe-area-inset-bottom));
+}
+.sheet h2{margin:0 0 16px;font-size:20px}
+.sheet .actions{display:flex;gap:8px;margin-top:8px}
+.sheet .actions .btn{flex:1}
+.check{
+  display:flex;align-items:center;gap:12px;min-height:48px;padding:6px 0;
+  border-bottom:1px solid var(--border);cursor:pointer;
+}
+.check input{width:24px;height:24px;accent-color:var(--accent);flex:none}
+.check.done span{text-decoration:line-through;color:var(--text-sub)}
+.check.must.todo span{font-weight:600}
+.group-title{font-size:16px;font-weight:700;margin:20px 0 4px;display:flex;justify-content:space-between;align-items:center}
+.progress{height:8px;background:var(--border);border-radius:999px;overflow:hidden;margin-top:6px}
+.progress i{display:block;height:100%;background:var(--accent)}
+.toast{
+  position:fixed;left:50%;bottom:calc(96px + env(safe-area-inset-bottom));transform:translateX(-50%);
+  background:#222;color:#fff;padding:10px 16px;border-radius:12px;font-size:14px;z-index:60;
+}
+.empty{text-align:center;color:var(--text-sub);padding:32px 0}
+.place-btns{display:flex;gap:8px;margin-top:10px}
+.place-btns a{flex:1;text-align:center;text-decoration:none;display:flex;align-items:center;justify-content:center}
+h3.sec-title{font-size:16px;margin:20px 0 8px}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="top">
+    <h1 id="ttl">일정</h1>
+    <div class="sub">제주 1박 2일 · 12/5(토) ~ 12/6(일) · 3명</div>
+  </header>
+  <main id="main"></main>
+</div>
+<div id="fabHost"></div>
+<nav class="tabs"><div class="in" id="tabs"></div></nav>
+<div id="overlayHost"></div>
+
+<script>
+(function(){
+'use strict';
+
+/* ---------- 저장소 ---------- */
+var KEY='jejutrip.v1';
+function safeGet(){try{return JSON.parse(localStorage.getItem(KEY));}catch(e){return null;}}
+function safeSet(v){try{localStorage.setItem(KEY,JSON.stringify(v));}catch(e){}}
+
+var uid=0;function nid(p){uid++;return p+Date.now().toString(36)+uid;}
+
+function defaults(){
+  var chk=function(g,must,list){return list.map(function(t){return {id:nid('c'),group:g,must:must,text:t};});};
+  var checklist=[].concat(
+    chk('필수 확인',true,['한라산 탐방예약 확인 화면(QR)과 신분증','헤드랜턴 + 여분 배터리','아이젠(체인젠) + 스패츠','방수·발목 보호 등산화','등산 스틱']),
+    chk('의류',false,['기능성 베이스레이어 1~2벌 (면 제외)','보온 중간층 (플리스 또는 경량 패딩)','방풍·방수 겉옷','정상 휴식용 경량 패딩 또는 조끼','등산 바지 + 기능성 레깅스','등산 양말 + 여벌 양말','방한 장갑 + 이너장갑 + 여벌 장갑','비니(방한 모자), 넥워머 또는 버프','선글라스 또는 고글','발 보온용 핫팩 또는 보온 깔창','하산 후 갈아입을 옷·속옷·수건','편한 신발(슬리퍼 또는 운동화)']),
+    chk('간식·음식·음료',false,['점심 도시락 1회분 + 여유분 1개','보온병에 담은 뜨거운 물(컵라면·즉석밥용)','젓가락·물티슈·음식 쓰레기 봉투','초콜릿, 에너지바','견과류, 말린 과일','젤리, 사탕(비상 당 보충)','귤, 바나나','삶은 계란, 육포','따뜻한 물·차 보온병 0.5~1L + 물 1L 이상']),
+    chk('장비·기타',false,['배낭(30L 안팎) + 방수 커버','핫팩','보조배터리 (방한 보관)','선크림','상비약 (진통제, 파스, 밴드, 개인 복용약)','휴대용 우비','쓰레기 봉투, 휴지·물티슈','현금 소액','사우나용 세면도구'])
+  );
+  return {
+    day:1, tab:'schedule', person:0,
+    members:['멤버1','멤버2','멤버3'],
+    schedule:[
+      {id:nid('s'),day:1,time:'06:15',title:'제주공항 도착',place:'제주공항',transport:'택시',type:'move',note:'택시로 관음사 탐방안내소 이동'},
+      {id:nid('s'),day:1,time:'입산 시각 입력',title:'한라산 종주 시작',place:'관음사 탐방안내소',transport:'도보',type:'hike',note:'탐방예약 완료. 입산 시각은 예약 정보를 보고 입력하세요.'},
+      {id:nid('s'),day:1,time:'하산 후',title:'성판악 도착 · 이동',place:'성판악 탐방안내소',transport:'자동차',type:'move',note:'성판악에서 돈백꽃까지 자동차로 이동 (차량 대기·픽업 확인 필요)'},
+      {id:nid('s'),day:1,time:'저녁',title:'돈백꽃 저녁 식사',place:'제주시 서해안로 264',transport:'자동차',type:'meal',note:'예약 없이 방문, 대기 가능. 영업시간·마지막 주문 시각 확인. 대체: 흑돈가 제주본점, 생돈우리 제주공항본점'},
+      {id:nid('s'),day:1,time:'식사 후',title:'휴식: 도두해수파크 사우나·찜질',place:'제주시 서해안로 236',transport:'자동차',type:'rest',note:'24시간 운영으로 안내됨(전화 064-711-1000). 카페는 진정성종점(서해안로 124, 09:00~21:00 안내)'},
+      {id:nid('s'),day:1,time:'밤',title:'신라스테이 제주공항점 숙박',place:'신라스테이 제주공항점',transport:'',type:'rest',note:'체크인 시각 확인'},
+      {id:nid('s'),day:2,time:'06:00 전후',title:'우진해장국 아침 식사',place:'우진해장국',transport:'',type:'meal',note:'고사리 육개장. 06:00부터로 안내되나 주소·영업시간이 출처마다 달라 방문 전 지도 앱 확인. 웨이팅 가능. 대체: 모이세해장국 본점, 은희네해장국 본점'},
+      {id:nid('s'),day:2,time:'아침',title:'제주공항 이동 · 대구행 탑승',place:'제주공항',transport:'',type:'move',note:'대구공항 09:30 도착 (제주 출발 시각은 항공편 확인)'}
+    ],
+    costs:[],
+    bookings:[
+      {id:nid('b'),kind:'항공',title:'대구 → 제주 (12/5 06:15 도착)',status:'확인필요',num:'',link:'',memo:'항공편 번호 입력'},
+      {id:nid('b'),kind:'항공',title:'제주 → 대구 (12/6 대구 09:30 도착)',status:'확인필요',num:'',link:'',memo:'제주 출발 시각 입력'},
+      {id:nid('b'),kind:'숙소',title:'신라스테이 제주공항점',status:'확인필요',num:'',link:'',memo:'체크인·체크아웃 시간 입력'},
+      {id:nid('b'),kind:'한라산',title:'한라산 탐방예약 (관음사 코스)',status:'완료',num:'',link:'https://visithalla.jeju.go.kr',memo:'예약 번호·입산 시각·인원 입력'},
+      {id:nid('b'),kind:'식당',title:'돈백꽃 (제주시 서해안로 264)',status:'예약없음',num:'',link:'',memo:'예약 없이 방문, 대기 가능'},
+      {id:nid('b'),kind:'차량',title:'성판악 하산 후 이동 차량',status:'확인필요',num:'',link:'',memo:'렌터카·택시·픽업 중 확정'},
+      {id:nid('b'),kind:'식당',title:'12/6 아침 식당: 우진해장국',status:'예약없음',num:'',link:'',memo:'확정. 영업시간·숙소에서 이동 시간 확인, 웨이팅 가능'}
+    ],
+    checklist:checklist,
+    checks:{}
+  };
+}
+
+var S=safeGet()||defaults();
+if(!S.checks) S.checks={};
+/* v2: 12/6 아침 식당을 우진해장국으로 확정 (이미 저장된 데이터에도 반영) */
+if((S.v||1)<2){
+  S.schedule.forEach(function(it){
+    if(it.day===2&&it.type==='meal'&&it.title==='아침 식사'){
+      it.title='우진해장국 아침 식사';it.place='우진해장국';
+      it.note='고사리 육개장. 06:00부터로 안내되나 주소·영업시간이 출처마다 달라 방문 전 지도 앱 확인. 웨이팅 가능. 대체: 모이세해장국 본점, 은희네해장국 본점';
+    }
+  });
+  S.bookings.forEach(function(b){
+    if(b.title==='12/6 아침 식당'){b.title='12/6 아침 식당: 우진해장국';b.status='예약없음';b.memo='확정. 영업시간·숙소에서 이동 시간 확인, 웨이팅 가능';}
+  });
+}
+/* v3: 1일차 첫 일정은 항상 06:15 제주공항 도착 (저장된 데이터의 순서도 바로잡음) */
+if(S.v<3){
+  var ai=S.schedule.findIndex(function(it){return it.day===1&&it.title==='제주공항 도착';});
+  var fi=S.schedule.findIndex(function(it){return it.day===1;});
+  if(ai>fi&&fi>=0){var a=S.schedule.splice(ai,1)[0];S.schedule.splice(fi,0,a);}
+}
+S.v=3;
+function save(){safeSet(S);}
+
+/* ---------- 유틸 ---------- */
+function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+function won(n){return Math.round(n).toLocaleString('ko-KR')+'원';}
+function safeUrl(u){u=String(u||'').trim();return /^https?:\/\//i.test(u)?u:'';}
+function $(id){return document.getElementById(id);}
+var toastT;
+function toast(msg){
+  var d=document.createElement('div');d.className='toast';d.textContent=msg;document.body.appendChild(d);
+  clearTimeout(toastT);toastT=setTimeout(function(){d.remove();},1800);
+}
+
+/* ---------- 바텀시트 ---------- */
+function openSheet(title,fields,vals,onSave,onDelete){
+  var h='<div class="overlay" id="ov"><div class="sheet" role="dialog" aria-modal="true"><h2>'+esc(title)+'</h2><form id="sf">';
+  fields.forEach(function(f){
+    var v=vals[f.k]==null?'':vals[f.k];
+    h+='<div class="field"><label for="f_'+f.k+'">'+esc(f.l)+'</label>';
+    if(f.t==='select'){
+      h+='<select id="f_'+f.k+'" name="'+f.k+'">'+f.o.map(function(o){
+        var ov=typeof o==='object'?o.v:o, ol=typeof o==='object'?o.l:o;
+        return '<option value="'+esc(ov)+'"'+(String(ov)===String(v)?' selected':'')+'>'+esc(ol)+'</option>';
+      }).join('')+'</select>';
+    }else if(f.t==='textarea'){
+      h+='<textarea id="f_'+f.k+'" name="'+f.k+'">'+esc(v)+'</textarea>';
+    }else{
+      h+='<input id="f_'+f.k+'" name="'+f.k+'" type="'+(f.t||'text')+'"'+(f.t==='number'?' inputmode="numeric" min="0"':'')+' value="'+esc(v)+'">';
+    }
+    h+='</div>';
+  });
+  h+='<div class="actions"><button type="button" class="btn ghost" id="sc">취소</button>'+
+     (onDelete?'<button type="button" class="btn danger" id="sd">삭제</button>':'')+
+     '<button type="submit" class="btn">저장</button></div></form></div></div>';
+  $('overlayHost').innerHTML=h;
+  function close(){$('overlayHost').innerHTML='';}
+  $('ov').addEventListener('click',function(e){if(e.target.id==='ov')close();});
+  $('sc').onclick=close;
+  if(onDelete)$('sd').onclick=function(){if(confirm('삭제할까요?')){onDelete();close();}};
+  $('sf').onsubmit=function(e){
+    e.preventDefault();
+    var out={};fields.forEach(function(f){out[f.k]=$('f_'+f.k).value;});
+    onSave(out);close();
+  };
+  var first=$('sf').querySelector('input,select,textarea');if(first&&!vals._noFocus)first.focus();
+}
+
+/* ---------- 일정 ---------- */
+var TYPES=[{v:'move',l:'이동'},{v:'hike',l:'한라산'},{v:'meal',l:'식사'},{v:'rest',l:'휴식'},{v:'etc',l:'기타'}];
+var HIKE=['관음사','삼각봉','정상(백록담)','진달래밭','성판악'];
+
+function viewSchedule(){
+  var d=S.day;
+  var items=S.schedule.filter(function(x){return x.day===d;});
+  var h='<div class="seg" role="tablist">'+
+    '<button class="'+(d===1?'on':'')+'" data-a="day" data-v="1">12/5 (토)</button>'+
+    '<button class="'+(d===2?'on':'')+'" data-a="day" data-v="2">12/6 (일)</button></div>';
+  if(!items.length)h+='<div class="empty">일정이 없습니다. + 버튼으로 추가하세요.</div>';
+  items.forEach(function(it,i){
+    h+='<div class="card '+esc(it.type)+'">'+
+      '<div class="row between"><span class="time">'+esc(it.time)+'</span>'+
+      '<span class="row" style="gap:0">'+
+      '<button class="icon-btn" aria-label="위로" data-a="up" data-id="'+it.id+'"'+(i===0?' disabled style="opacity:.3"':'')+'>▲</button>'+
+      '<button class="icon-btn" aria-label="아래로" data-a="down" data-id="'+it.id+'"'+(i===items.length-1?' disabled style="opacity:.3"':'')+'>▼</button>'+
+      '<button class="icon-btn" aria-label="수정" data-a="editS" data-id="'+it.id+'">✎</button></span></div>'+
+      '<div class="title">'+esc(it.title)+'</div>'+
+      (it.place?'<div class="sub">📍 '+esc(it.place)+'</div>':'')+
+      '<div class="row" style="margin-top:6px;flex-wrap:wrap">'+
+      (it.transport?'<span class="chip">'+esc(it.transport)+'</span>':'')+
+      '<span class="chip '+(it.type==='rest'?'ok':it.type==='hike'?'warn':'')+'">'+esc((TYPES.filter(function(t){return t.v===it.type;})[0]||{l:'기타'}).l)+'</span></div>'+
+      (it.note?'<div class="note">'+esc(it.note)+'</div>':'');
+    if(it.type==='hike'){
+      h+='<div class="segs">'+HIKE.map(function(s,k){return (k?'<span class="arrow">→</span>':'')+'<span class="chip ok">'+esc(s)+'</span>';}).join('')+'</div>'+
+         '<div class="warnbox">⚠ 12월은 해가 일찍 집니다. 구간별 통과 제한 시각과 일몰 시각은 한라산국립공원 공식 안내에서 확인하세요. 헤드랜턴을 꼭 챙기세요.</div>';
+    }
+    h+='</div>';
+  });
+  return h;
+}
+function schedFields(){
+  return [
+    {k:'time',l:'시각',t:'text'},{k:'title',l:'제목',t:'text'},{k:'place',l:'장소',t:'text'},
+    {k:'transport',l:'이동 수단',t:'select',o:['','택시','자동차','도보','버스','비행기']},
+    {k:'type',l:'종류',t:'select',o:TYPES},{k:'note',l:'메모',t:'textarea'}
+  ];
+}
+function addSchedule(){
+  openSheet('일정 추가',schedFields(),{type:'etc'},function(v){
+    if(!v.title.trim()){toast('제목을 입력하세요');return;}
+    v.id=nid('s');v.day=S.day;S.schedule.push(v);save();render();toast('추가했어요');
+  });
+}
+function editSchedule(id){
+  var it=S.schedule.filter(function(x){return x.id===id;})[0];if(!it)return;
+  openSheet('일정 수정',schedFields(),it,function(v){
+    for(var k in v)it[k]=v[k];save();render();toast('저장했어요');
+  },function(){S.schedule=S.schedule.filter(function(x){return x.id!==id;});save();render();});
+}
+function moveSchedule(id,dir){
+  var idx=S.schedule.findIndex(function(x){return x.id===id;});if(idx<0)return;
+  var day=S.schedule[idx].day;var j=idx+dir;
+  while(j>=0&&j<S.schedule.length&&S.schedule[j].day!==day)j+=dir;
+  if(j<0||j>=S.schedule.length)return;
+  var t=S.schedule[idx];S.schedule[idx]=S.schedule[j];S.schedule[j]=t;save();render();
+}
+
+/* ---------- 지도(외부 지도 연결) ---------- */
+var PLACES=[
+  {n:'제주공항',q:'제주국제공항',s:'12/5 도착, 12/6 출발'},
+  {n:'관음사 탐방안내소',q:'한라산 관음사 탐방안내소',s:'한라산 등반 시작점 (택시로 이동)'},
+  {n:'성판악 탐방안내소',q:'한라산 성판악 탐방안내소',s:'한라산 하산 도착점'},
+  {n:'돈백꽃',q:'제주시 서해안로 264',s:'12/5 저녁 식사 (예약 없이 방문)'},
+  {n:'도두해수파크',q:'도두해수파크',s:'서해안로 236 · 사우나·찜질방'},
+  {n:'카페 진정성종점',q:'카페 진정성종점 서해안로 124',s:'오션뷰 카페'},
+  {n:'신라스테이 제주공항점',q:'신라스테이 제주공항점',s:'숙소'},
+  {n:'흑돈가 제주본점',q:'흑돈가 제주본점',s:'저녁 대체 후보'},
+  {n:'우진해장국',q:'우진해장국 제주',s:'12/6 아침 식사 (확정)'},
+  {n:'모이세해장국 본점',q:'모이세해장국 본점',s:'12/6 아침 대체 후보'}
+];
+function viewMap(){
+  var h='<div class="warnbox" style="margin:0 0 12px">지도는 네이버지도·카카오맵 앱/웹으로 열립니다. 숙소에서 각 장소까지의 이동 시간은 지도에서 확인하세요.</div>';
+  PLACES.forEach(function(p){
+    var e=encodeURIComponent(p.q);
+    h+='<div class="card"><div class="title">'+esc(p.n)+'</div><div class="sub">'+esc(p.s)+'</div>'+
+      '<div class="place-btns">'+
+      '<a class="btn sec sm" target="_blank" rel="noopener" href="https://map.naver.com/p/search/'+e+'">네이버지도</a>'+
+      '<a class="btn sec sm" target="_blank" rel="noopener" href="https://map.kakao.com/?q='+e+'">카카오맵</a></div></div>';
+  });
+  h+='<h3 class="sec-title">등반 경로</h3><div class="card"><div class="segs" style="margin-top:0">'+
+    HIKE.map(function(s,k){return (k?'<span class="arrow">→</span>':'')+'<span class="chip ok">'+esc(s)+'</span>';}).join('')+'</div></div>';
+  return h;
+}
+
+/* ---------- 비용 ---------- */
+function viewCost(){
+  var m=S.members,total=0,paid=[0,0,0];
+  S.costs.forEach(function(c){var a=+c.amount||0;total+=a;paid[+c.payer]+=a;});
+  var share=total/3;
+  var bal=paid.map(function(p){return p-share;});
+  var h='<div class="summary"><div class="card"><div class="sub">총액</div><div class="big">'+won(total)+'</div></div>'+
+        '<div class="card"><div class="sub">1인당</div><div class="big">'+won(share)+'</div></div></div>';
+  // 정산 안내
+  var debtors=[],creditors=[];
+  bal.forEach(function(b,i){if(b<-0.5)debtors.push({i:i,a:-b});else if(b>0.5)creditors.push({i:i,a:b});});
+  var lines=[];
+  debtors.forEach(function(d){
+    creditors.forEach(function(c){
+      if(d.a<=0.5||c.a<=0.5)return;
+      var x=Math.min(d.a,c.a);d.a-=x;c.a-=x;
+      lines.push(esc(m[d.i])+' → '+esc(m[c.i])+' <b>'+won(x)+'</b>');
+    });
+  });
+  h+='<div class="card"><div class="row between"><b>정산 결과</b><button class="btn ghost sm" data-a="rename">이름 변경</button></div>'+
+     (S.costs.length?m.map(function(n,i){return '<div class="row between sub" style="margin-top:4px"><span>'+esc(n)+' 결제 '+won(paid[i])+'</span><span>'+(bal[i]>=0?'받을 돈 ':'보낼 돈 ')+won(Math.abs(bal[i]))+'</span></div>';}).join(''):'<div class="sub">비용을 추가하면 자동 계산됩니다.</div>')+
+     (lines.length?'<div class="note" style="margin-top:10px">'+lines.join('<br>')+'</div>':'')+'</div>';
+  if(!S.costs.length)h+='<div class="empty">등록된 비용이 없습니다. + 버튼으로 추가하세요.</div>';
+  S.costs.forEach(function(c){
+    h+='<div class="card"><div class="row between"><div><div class="title">'+esc(c.title)+'</div>'+
+      '<div class="sub">'+esc(c.cat)+' · '+esc(m[+c.payer])+' 결제</div></div>'+
+      '<div style="text-align:right"><div class="title">'+won(+c.amount||0)+'</div>'+
+      '<span class="chip '+(c.settled==='1'?'ok':'warn')+'">'+(c.settled==='1'?'정산 완료':'정산 필요')+'</span></div></div>'+
+      '<div class="row" style="margin-top:8px"><button class="btn sec sm" data-a="toggleSettle" data-id="'+c.id+'">'+(c.settled==='1'?'정산 취소':'정산 완료로')+'</button>'+
+      '<button class="btn ghost sm" data-a="editC" data-id="'+c.id+'">수정</button></div></div>';
+  });
+  return h;
+}
+function costFields(){
+  return [
+    {k:'title',l:'항목',t:'text'},
+    {k:'cat',l:'분류',t:'select',o:['교통','숙박','식사','입장·이용료','기타']},
+    {k:'amount',l:'금액(원)',t:'number'},
+    {k:'payer',l:'결제자',t:'select',o:S.members.map(function(n,i){return {v:i,l:n};})},
+    {k:'settled',l:'정산',t:'select',o:[{v:'0',l:'정산 필요'},{v:'1',l:'정산 완료'}]}
+  ];
+}
+function addCost(){
+  openSheet('비용 추가',costFields(),{cat:'식사',payer:0,settled:'0'},function(v){
+    if(!v.title.trim()||!(+v.amount>0)){toast('항목과 금액을 입력하세요');return;}
+    v.id=nid('m');S.costs.push(v);save();render();toast('추가했어요');
+  });
+}
+function editCost(id){
+  var c=S.costs.filter(function(x){return x.id===id;})[0];if(!c)return;
+  openSheet('비용 수정',costFields(),c,function(v){
+    if(!v.title.trim()||!(+v.amount>0)){toast('항목과 금액을 입력하세요');return;}
+    for(var k in v)c[k]=v[k];save();render();
+  },function(){S.costs=S.costs.filter(function(x){return x.id!==id;});save();render();});
+}
+function renameMembers(){
+  openSheet('멤버 이름',[{k:'a',l:'멤버 1',t:'text'},{k:'b',l:'멤버 2',t:'text'},{k:'c',l:'멤버 3',t:'text'}],
+    {a:S.members[0],b:S.members[1],c:S.members[2]},function(v){
+      S.members=[v.a.trim()||'멤버1',v.b.trim()||'멤버2',v.c.trim()||'멤버3'];save();render();
+    });
+}
+
+/* ---------- 예약 ---------- */
+var STATUS=['완료','확인필요','예약없음','취소'];
+function viewBooking(){
+  var order=['항공','숙소','한라산','차량','식당'];
+  var list=S.bookings.slice().sort(function(a,b){return order.indexOf(a.kind)-order.indexOf(b.kind);});
+  var done=S.bookings.filter(function(b){return b.status==='완료';}).length;
+  var h='<div class="card"><b>예약 현황</b> <span class="sub">완료 '+done+' / 전체 '+S.bookings.length+'</span></div>';
+  list.forEach(function(b){
+    var cls=b.status==='완료'?'ok':b.status==='취소'?'err':b.status==='예약없음'?'':'warn';
+    var u=safeUrl(b.link);
+    h+='<div class="card"><div class="row between"><span class="sub">'+esc(b.kind)+'</span><span class="chip '+cls+'">'+esc(b.status)+'</span></div>'+
+      '<div class="title">'+esc(b.title)+'</div>'+
+      (b.num?'<div class="sub">예약번호 '+esc(b.num)+'</div>':'')+
+      (b.memo?'<div class="note">'+esc(b.memo)+'</div>':'')+
+      '<div class="row" style="margin-top:8px">'+
+      (u?'<a class="btn sec sm" style="display:flex;align-items:center;text-decoration:none" target="_blank" rel="noopener" href="'+esc(u)+'">예약 링크 열기</a>':'')+
+      '<button class="btn ghost sm" data-a="editB" data-id="'+b.id+'">수정</button></div></div>';
+  });
+  return h;
+}
+function bookFields(){
+  return [
+    {k:'kind',l:'종류',t:'select',o:['항공','숙소','한라산','차량','식당']},
+    {k:'title',l:'이름',t:'text'},
+    {k:'status',l:'상태',t:'select',o:STATUS},
+    {k:'num',l:'예약번호',t:'text'},
+    {k:'link',l:'예약 링크(https://...)',t:'url'},
+    {k:'memo',l:'메모',t:'textarea'}
+  ];
+}
+function addBooking(){
+  openSheet('예약 추가',bookFields(),{kind:'식당',status:'확인필요'},function(v){
+    if(!v.title.trim()){toast('이름을 입력하세요');return;}
+    v.id=nid('b');S.bookings.push(v);save();render();toast('추가했어요');
+  });
+}
+function editBooking(id){
+  var b=S.bookings.filter(function(x){return x.id===id;})[0];if(!b)return;
+  openSheet('예약 수정',bookFields(),b,function(v){
+    for(var k in v)b[k]=v[k];save();render();
+  },function(){S.bookings=S.bookings.filter(function(x){return x.id!==id;});save();render();});
+}
+
+/* ---------- 준비물 ---------- */
+function isChecked(id){return !!(S.checks[S.person]&&S.checks[S.person][id]);}
+function viewCheck(){
+  var h='<div class="seg">'+S.members.map(function(n,i){return '<button class="'+(S.person===i?'on':'')+'" data-a="person" data-v="'+i+'">'+esc(n)+'</button>';}).join('')+'</div>';
+  var total=S.checklist.length,done=S.checklist.filter(function(c){return isChecked(c.id);}).length;
+  h+='<div class="card"><div class="row between"><b>'+esc(S.members[S.person])+' 준비 현황</b><span class="sub">'+done+' / '+total+'</span></div>'+
+     '<div class="progress"><i style="width:'+(total?done/total*100:0)+'%"></i></div></div>';
+  var groups=[];S.checklist.forEach(function(c){if(groups.indexOf(c.group)<0)groups.push(c.group);});
+  groups.sort(function(a,b){return (a==='필수 확인'?0:1)-(b==='필수 확인'?0:1);});
+  groups.forEach(function(g){
+    var items=S.checklist.filter(function(c){return c.group===g;});
+    var gd=items.filter(function(c){return isChecked(c.id);}).length;
+    var must=items.some(function(c){return c.must;});
+    h+='<div class="group-title"><span>'+(must?'⚠ ':'')+esc(g)+'</span><span class="chip '+(gd===items.length?'ok':must?'warn':'')+'">'+gd+'/'+items.length+'</span></div>';
+    items.forEach(function(c){
+      var ck=isChecked(c.id);
+      h+='<label class="check '+(ck?'done':'')+(c.must&&!ck?' must todo':'')+'">'+
+        '<input type="checkbox" data-a="chk" data-id="'+c.id+'"'+(ck?' checked':'')+'>'+
+        '<span style="flex:1">'+esc(c.text)+(c.must&&!ck?' <span class="chip warn">필수</span>':'')+'</span>'+
+        '<button type="button" class="icon-btn" aria-label="수정" data-a="editK" data-id="'+c.id+'">✎</button></label>';
+    });
+  });
+  return h;
+}
+function checkFields(){
+  var gs=[];S.checklist.forEach(function(c){if(gs.indexOf(c.group)<0)gs.push(c.group);});
+  return [{k:'text',l:'준비물',t:'text'},{k:'group',l:'분류',t:'select',o:gs},{k:'must',l:'필수 항목',t:'select',o:[{v:'0',l:'아니오'},{v:'1',l:'예'}]}];
+}
+function addCheck(){
+  openSheet('준비물 추가',checkFields(),{group:'장비·기타',must:'0'},function(v){
+    if(!v.text.trim()){toast('준비물을 입력하세요');return;}
+    S.checklist.push({id:nid('c'),group:v.group,must:v.must==='1',text:v.text});save();render();toast('추가했어요');
+  });
+}
+function editCheck(id){
+  var c=S.checklist.filter(function(x){return x.id===id;})[0];if(!c)return;
+  openSheet('준비물 수정',checkFields(),{text:c.text,group:c.group,must:c.must?'1':'0'},function(v){
+    c.text=v.text;c.group=v.group;c.must=v.must==='1';save();render();
+  },function(){S.checklist=S.checklist.filter(function(x){return x.id!==id;});save();render();});
+}
+
+/* ---------- 렌더 ---------- */
+var TABS=[
+  {k:'schedule',l:'일정',i:'🗓',t:'일정',fab:addSchedule,view:viewSchedule},
+  {k:'map',l:'지도',i:'🗺',t:'지도',view:viewMap},
+  {k:'cost',l:'비용',i:'💰',t:'비용 정산',fab:addCost,view:viewCost},
+  {k:'booking',l:'예약',i:'🎫',t:'예약',fab:addBooking,view:viewBooking},
+  {k:'check',l:'준비물',i:'🎒',t:'준비물',fab:addCheck,view:viewCheck}
+];
+function render(){
+  var t=TABS.filter(function(x){return x.k===S.tab;})[0]||TABS[0];
+  $('ttl').textContent=t.t;
+  $('main').innerHTML=t.view();
+  $('tabs').innerHTML=TABS.map(function(x){
+    return '<button class="'+(x.k===S.tab?'on':'')+'" data-a="tab" data-v="'+x.k+'" aria-label="'+x.l+'"><span class="ic">'+x.i+'</span>'+x.l+'</button>';
+  }).join('');
+  $('fabHost').innerHTML=t.fab?'<button class="fab" data-a="fab" aria-label="추가">+</button>':'';
+  save();
+}
+
+document.addEventListener('click',function(e){
+  var el=e.target.closest('[data-a]');if(!el)return;
+  var a=el.getAttribute('data-a'),id=el.getAttribute('data-id'),v=el.getAttribute('data-v');
+  if(a==='tab'){S.tab=v;render();window.scrollTo(0,0);}
+  else if(a==='day'){S.day=+v;render();}
+  else if(a==='fab'){(TABS.filter(function(x){return x.k===S.tab;})[0]).fab();}
+  else if(a==='editS')editSchedule(id);
+  else if(a==='up')moveSchedule(id,-1);
+  else if(a==='down')moveSchedule(id,1);
+  else if(a==='editC')editCost(id);
+  else if(a==='toggleSettle'){var c=S.costs.filter(function(x){return x.id===id;})[0];if(c){c.settled=c.settled==='1'?'0':'1';render();}}
+  else if(a==='rename')renameMembers();
+  else if(a==='editB')editBooking(id);
+  else if(a==='person'){S.person=+v;render();}
+  else if(a==='editK'){e.preventDefault();editCheck(id);}
+});
+document.addEventListener('change',function(e){
+  var el=e.target;
+  if(el.getAttribute&&el.getAttribute('data-a')==='chk'){
+    var id=el.getAttribute('data-id');
+    if(!S.checks[S.person])S.checks[S.person]={};
+    S.checks[S.person][id]=el.checked;
+    var y=window.scrollY;render();window.scrollTo(0,y);
+  }
+});
+
+render();
+})();
+</script>
+</body>
+</html>
